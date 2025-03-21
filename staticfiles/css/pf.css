@@ -1,0 +1,26 @@
+body {
+    background: url('/static/images/ecommerce-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+body {
+    background-color: #f8f9fa; /* Light gray */
+}
+
+body {
+    background: linear-gradient(to right, #ffffff, #f2f2f2);
+}
+body {
+    background-color: #121212;
+    color: #ffffff;
+}
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    background: linear-gradient(270deg, #ed1010, #4904c0, #e10606);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+}

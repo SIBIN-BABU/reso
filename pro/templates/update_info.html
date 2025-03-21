@@ -1,0 +1,23 @@
+{% include 'header.html' %}
+
+
+
+<form method="POST" action="{% url 'update_info' %}">
+  
+    <br><br/>  
+    {% csrf_token %}
+ <div class="container">   
+  <strong> billing address</strong> 
+{{form.as_p}}
+<br><br/>
+<strong> Shipping  address</strong>
+{{shipping_form.as_p}}
+<br><br/>
+<button type="submit" class="btn btn-secondary"> Update</button>
+<br><br/>
+ 
+
+  <br><br/>  <br><br/>
+
+ 
+{% include 'footer.html' %}

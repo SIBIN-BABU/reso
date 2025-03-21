@@ -1,0 +1,139 @@
+{% load static %}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shop | Homepage</title>
+
+    <!-- Bootstrap Icons & jQuery -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- ✅ Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+    
+    <!-- ✅ External CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/st.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ft.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fh.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dd.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rr.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sz.css' %}">
+   
+    <link rel="stylesheet" href="{% static 'css/ftr.css' %}">
+</head>
+
+
+
+<!-- ✅ Upgraded Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+    
+    <div class="container px-4 px-lg-5">
+        <!-- ✅ Brand Logo -->
+        <a class="navbar-brand fw-bold" href="{% url 'index' %}">ShopNow</a>
+
+        <!-- ✅ Mobile Menu Toggle -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- ✅ Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="{% url 'index' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url "search" %}">search</a></li>
+
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'info' %}">INfo</a></li>
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" id="shopDropdown" href="#" role="button" data-bs-toggle="dropdown">
+                            Orders
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href=""></a></li>
+                           
+                            <li><a class="dropdown-item" href="{% url 'shipped_item'  %}">Shipped orders</a></li>
+                            <li><a class="dropdown-item" href="{% url 'unshipped_item'  %}">Unshipped orders</a></li>
+                          
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" id="shopDropdown" href="#" role="button" data-bs-toggle="dropdown">
+                            Profile
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href=""></a></li>
+                           
+                            <li><a class="dropdown-item" href="{% url 'update'  %}">Update Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'update_info'  %}">Update info</a></li>
+                          
+                        </ul>
+                    </li>
+
+                    
+                  
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+
+
+                <div >
+                    <form class="d-flex" method="POST" account="{% url 'search' %}">
+                        {% csrf_token %}
+                        <input class="form-control me-2" type="text" placeholder="Search" name="searched">
+                       <button class="btn btn-outline-success" type="submit">Search</button>
+                      </form>
+                </div>
+                <!-- ✅ Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="shopDropdown" href="#" role="button" data-bs-toggle="dropdown">
+                        Shop
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="">All Categories</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{% url 'category' 'accesories' %}">Accessories</a></li>
+                        <li><a class="dropdown-item" href="{% url 'category' 'food items' %}">Food</a></li>
+                    </ul>
+                </li>
+
+                <!-- ✅ Cart Button -->
+                <li class="nav-item">
+                    <a href="{% url 'cart_summary' %}" class="btn btn-outline-light position-relative">
+                        <i class="bi-cart-fill me-1"></i> Cart
+                        <span id="cart_quantity" class="badge bg-danger text-white position-absolute top-0 start-100 translate-middle rounded-pill">
+                            {{ cart|length }}
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ✅ Navbar Spacing Fix (Ensures Content is Visible Below Fixed Navbar) -->
+<div style="margin-top: 80px;"></div>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-danger text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+<div id="success-message" class="alert alert-success d-none" role="alert"></div>
+

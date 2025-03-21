@@ -1,0 +1,33 @@
+footer {
+    background-color: #23242a; /* Keeps the dark background */
+    width: 100%; /* Makes it full width */
+    padding: 20px 0; /* Reduce vertical padding for less height */
+}
+
+.container {
+    max-width: 95%; /* Increase width to take more space */
+}
+
+footer .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Align content properly */
+    flex-wrap: wrap;
+}
+
+footer h5 {
+    font-size: 1.2rem; /* Slightly reduce font size for a neater look */
+}
+
+footer p {
+    font-size: 0.95rem;
+}
+
+footer .table {
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+footer .form-outline {
+    width: 90%;
+}

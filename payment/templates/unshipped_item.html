@@ -1,0 +1,36 @@
+
+{% include "header.html" %}
+
+<br><br/><br><br/>
+<table class="table table-striped container">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Date of Order</th>
+      <th scope="col">Order ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for orders in order %}
+    
+    
+      
+   
+      
+    <tr>
+      <td>{{ orders.Full_name }}</td>
+      <td>{{ orders.email }}</td>
+      <td>{{ orders.date_order }}</td>
+      <td> <a href="{% url 'order' orders.id %}">{{ orders.id }}</a></td>
+    </tr>
+    
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+
+
+

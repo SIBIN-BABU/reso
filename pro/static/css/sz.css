@@ -1,0 +1,16 @@
+/* Ensure uniform width and height for select dropdowns */
+.form-select {
+    width: 75px; /* Adjust as needed */
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* Make Add to Cart button match width */
+.btn-custom {
+    width: 100%; /* Ensures it takes full available width */
+    max-width: 150px; /* Set a max width */
+    height: 40px;
+    font-size: 16px;
+}

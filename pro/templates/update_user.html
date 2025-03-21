@@ -1,0 +1,21 @@
+{% include 'header.html' %}
+
+
+
+<form method="POST" action="{% url 'update' %}">
+    <br><br/>  <br><br/>
+    {% csrf_token %}
+ <div class="container">    
+{{user_form.as_p}}
+<br><br/>
+<button type="submit" class="btn btn-secondary"> Register</button>
+<br><br/>
+<button class="container">
+  <li class="nav-item"><a class="nav-link" href="{% url 'update_password' %}">Change Password</a></li>
+  </button>
+</div> 
+
+  <br><br/>  <br><br/>
+
+ 
+{% include 'footer.html' %}

@@ -1,0 +1,96 @@
+{% load static %}
+{% include "header.html" %}
+
+<!-- Bootstrap 5 (Updated) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<div class="container my-5">
+    <!-- Breadcrumb / Steps -->
+    <div class="row mb-4 text-center">
+        <div class="col">
+            <nav>
+                <span class="badge bg-primary p-2">Cart</span> 
+                <span class="mx-2 text-muted">➝</span>
+                <span class="badge bg-primary p-2">Checkout</span>
+                <span class="mx-2 text-muted">➝</span>
+                <span class="badge bg-success p-2">Thank You</span>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Review Order -->
+        <div class="col-lg-6 mx-auto">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white d-flex justify-content-between">
+                    <strong>Review Order</strong>
+                    <small><a href="{% url 'cart_summary' %}" class="text-white">Edit Cart</a></small>
+                </div>
+
+                <div class="card-body">
+                    {% for product in product %}
+                    <div class="row align-items-center border-bottom py-2">
+                        <!-- Product Image -->
+                        <div class="col-3">
+                            <img src="{{ product.image.url }}" class="img-fluid rounded">
+                        </div>
+
+                        <!-- Product Details -->
+                        <div class="col-6">
+                            <h6 class="mb-1">{{ product.name }}</h6>
+                            <small>
+                                {% for key, value in quantities.items %}
+                                    {% if key == product.id|slugify %}
+                                        Quantity: {{ value }}
+                                    {% endif %}
+                                {% endfor %}
+                            </small>
+                        </div>
+
+                        <!-- Price -->
+                        <div class="col-3 text-end">
+                            {% if product.is_sale %}
+                                <span class="text-muted text-decoration-line-through">${{ product.price }}</span><br>
+                                <strong>$ {{ product.sale_price }}</strong> 
+                            {% else %}
+                                <strong>$ {{ product.price }}</strong>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Cart Total -->
+            <div class="card shadow mt-4">
+                <div class="card-body text-center">
+                    <h5 class="fw-bold text-primary">Cart Total</h5>
+                    <h3 class="fw-bold text-dark">${{ totals }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Address Section -->
+    
+        <div class="row mt-4">
+            <div class="col-lg-6 mx-auto">
+                <div class="card shadow">
+                    <div class="card-header bg-info text-white">Shipping Address</div>
+                    <div class="card-body">
+        <form method="POST" action="{% url 'billing_info' %}">
+            {% csrf_token %}
+                        {{form.as_p}}
+                    </div>
+                </div><br>
+                <button type ="submit" class="btn btn-secondary"> Continue to billing</button>
+            </div>
+            
+        </div>
+    </form>
+    
+</div>
+
+{% include "footer.html" %}

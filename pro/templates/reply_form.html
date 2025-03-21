@@ -1,0 +1,13 @@
+<form method="post">
+    {% csrf_token %}
+    <label>User Email:</label>
+    {{ form.user_email }}
+    
+    <label>Subject:</label>
+    {{ form.subject }}
+    
+    <label>Message:</label>
+    {{ form.message }}
+
+    <button type="submit">Send Reply</button>
+</form>

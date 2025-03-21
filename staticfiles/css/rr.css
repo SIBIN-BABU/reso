@@ -1,0 +1,23 @@
+/* ✅ Stylish Sale Ribbon */
+.sale-ribbon {
+    position: absolute;
+    top: 15px;
+    right: -10px;
+    background: linear-gradient(45deg, #ff4d4d, #ff0000);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: rotate(10deg);
+    z-index: 10;
+    letter-spacing: 1px;
+}
+
+/* ✅ Subtle Animation */
+.sale-ribbon:hover {
+    transform: rotate(10deg) scale(1.1);
+    transition: 0.3s ease-in-out;
+}
