@@ -119,7 +119,7 @@ DATABASES = {
         "USER": "postgres",
         "PASSWORD": "MQzKNloDKDxRFWZluxzjpAXJHkVMQAdF",
         "HOST": "switchyard.proxy.rlwy.net",  # Use public host
-        "PORT": "5432",  # Use the correct public port
+        "PORT": "10959",  # Use the correct public port
     }
 }
 
