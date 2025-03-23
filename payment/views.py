@@ -1,6 +1,9 @@
 from django.shortcuts import render,redirect
 from cart.cart import Cart
+
 from pro.models import Profile
+from django.conf import settings
+
 from pro.forms import UserInfoForm
 from.models import ShippingAdddress,Order,OrderItem
 from.forms import ShippingForm,CardDetails
@@ -12,6 +15,8 @@ from pro.models import Product
 def payment_sucess(request):
     return render(request,"payment_success.html")
 
+def payment_failed(request):
+    return render(request,"payment_failed.html")
 
 
 def checkout(request):
@@ -47,12 +52,33 @@ def billing_info(request):
         my_shipping=request.POST
         request.session['my_shipping'] = my_shipping
         
+        #get the host
+        
+        host = request.get_host()
+        #create paypal form dictionary
+        paypal_dict = {
+            'business' : settings.PAYPAL_RECEIVER_EMAIL,
+            'amount' : totals,
+            'item_name' : 'product_order',
+            'no_shipping' : '2',
+            'invoice'  : str(uuid.uuid4()),
+            'currency_code' : 'EUR',
+            'notify_url': 'https://{}{}'.format(host, reverse("paypal-ipn")),
+            'return_url': 'https://{}{}'.format(host, reverse("payment_success")),
+            'cancel_return': 'https://{}{}'.format(host, reverse("payment_failed"))
+            
+            
+        }
+        
+        #create actual paypal form button
+        paypal_from =PayPalPaymentsForm(initial=paypal_dict)
+        
         if request.user.is_authenticated:
             form_card =CardDetails()
-            return render(request,"billing_info.html",{"product":product,"quantities":quantities,"totals":totals,"form":request.POST,"form_card":form_card})
+            return render(request,"billing_info.html",{"paypal_from":paypal_from,"product":product,"quantities":quantities,"totals":totals,"form":request.POST,"form_card":form_card})
         else:
             form_card =CardDetails()
-            return render(request,"billing_info.html",{"product":product,"quantities":quantities,"totals":totals,"form":request.POST,"form_card":form_card})
+            return render(request,"billing_info.html",{"paypal_from":paypal_from,"product":product,"quantities":quantities,"totals":totals,"form":request.POST,"form_card":form_card})
             
         
         

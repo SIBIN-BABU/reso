@@ -27,9 +27,9 @@ SECRET_KEY = "django-insecure-vnlkyj=n1g!c))x-)b(j_iw4s(e^79sfjm7^h!0$hhf@b&(ucs
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = ['https://urbanswifts.com', 'urbanswifts.com','reso-production.up.railway.app','https://reso-production.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['https://urbanswifts.com','https://reso-production.up.railway.app']
+ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['https://urbanswifts.com', 'urbanswifts.com','reso-production.up.railway.app','https://reso-production.up.railway.app']
+#CSRF_TRUSTED_ORIGINS = ['https://urbanswifts.com','https://reso-production.up.railway.app']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "cart",
     "payment",
     "whitenoise.runserver_nostatic",
+    "paypal.standard.ipn",
 ]
 
 MIDDLEWARE = [
@@ -171,3 +172,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#do some paypal stuf
+
+
+PAYPAL_TEST = True
+
+PAYPAL_RECEIVER_EMAIL = 'businesssibin@gmail.com'

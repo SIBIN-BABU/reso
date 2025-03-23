@@ -11,6 +11,11 @@ import json
 from cart.cart import Cart
 from payment.models import ShippingAdddress
 from payment.forms import ShippingForm
+#paypal stuffs 
+from django.urls import reverse
+from paypal.standard.forms import PayPalPaymentsForm
+from django.conf import settings
+import uuid #duplicate id for paypal
 
 
 

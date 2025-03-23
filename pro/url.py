@@ -1,5 +1,5 @@
 
-from django.urls import path
+from django.urls import path,include
 from pro import views
 
 
@@ -19,6 +19,7 @@ urlpatterns = [
    path("category/<str:foo>/",views.category,name="category"),
    path("search/",views.search,name="search"),
    path("info/",views.info,name="info"),
+   path("paypal",include("paypal.standard.ipn.urls")),
    
 
 ]
