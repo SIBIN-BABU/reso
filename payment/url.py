@@ -7,7 +7,7 @@ from  .import views
 
 
 urlpatterns = [
-   path("payment_sucess/",views.payment_sucess,name="payment_sucess"),
+   path("payment_success/", views.payment_success, name="payment_success"),
    path("payment_failed/",views.payment_failed,name="payment_failed"),
    path("chechout/",views.checkout,name="checkout"),
    path("billing_info/",views.billing_info,name="billing_info"),
@@ -16,7 +16,7 @@ urlpatterns = [
    path("unshipped_item/",views.unshipped_item,name="unshipped_item"),
    path("order/<int:pk>/",views.order,name="order"),
    path("paypal",include("paypal.standard.ipn.urls")),
-    path("paypal",include("paypal.standard.ipn.urls")),
+
    
   
 ]

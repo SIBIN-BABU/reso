@@ -18,7 +18,7 @@ from paypal.standard.forms import PayPalPaymentsForm
 from django.conf import settings
 import uuid #duplicate id for paypal
 # Create your views here.
-def payment_sucess(request):
+def payment_success(request):
     return render(request,"payment_success.html")
 
 def payment_failed(request):
