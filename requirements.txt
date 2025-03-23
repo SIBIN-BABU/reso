@@ -16,3 +16,5 @@ typing_extensions==4.12.2
 
 
 whitenoise==6.9.0
+
+django-paypal==2.1
