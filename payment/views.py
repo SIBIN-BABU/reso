@@ -71,20 +71,21 @@ def billing_info(request):
             'currency_code' : 'EUR',
             'notify_url': 'https://{}{}'.format(host, reverse("paypal-ipn")),
             'return_url': 'https://{}{}'.format(host, reverse("payment_success")),
-            'cancel_return': 'https://{}{}'.format(host, reverse("payment_failed"))
+            'cancel_return': 'https://{}{}'.format(host, reverse("payment_failed")),
             
             
         }
         
         #create actual paypal form button
-        paypal_from =PayPalPaymentsForm(initial=paypal_dict)
+        paypal_form = PayPalPaymentsForm(initial=paypal_dict)
+
         
         if request.user.is_authenticated:
             form_card =CardDetails()
-            return render(request,"billing_info.html",{"paypal_from":paypal_from,"product":product,"quantities":quantities,"totals":totals,"form":request.POST,"form_card":form_card})
+            return render(request,"billing_info.html",{"paypal_form":paypal_form,"product":product,"quantities":quantities,"totals":totals,"form":request.POST,"form_card":form_card})
         else:
             form_card =CardDetails()
-            return render(request,"billing_info.html",{"paypal_from":paypal_from,"product":product,"quantities":quantities,"totals":totals,"form":request.POST,"form_card":form_card})
+            return render(request,"billing_info.html",{"paypal_form":paypal_form,"product":product,"quantities":quantities,"totals":totals,"form":request.POST,"form_card":form_card})
             
         
         
