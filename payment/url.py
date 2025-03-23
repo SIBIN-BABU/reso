@@ -7,8 +7,8 @@ from  .import views
 
 
 urlpatterns = [
-   path("",views.payment_sucess,name="payment_sucess"),
-   path("payment_failed",views.payment_failed,name="payment_failed"),
+   path("payment_sucess/",views.payment_sucess,name="payment_sucess"),
+   path("payment_failed/",views.payment_failed,name="payment_failed"),
    path("chechout/",views.checkout,name="checkout"),
    path("billing_info/",views.billing_info,name="billing_info"),
    path("payment/",views.payment_info,name="payment"),
