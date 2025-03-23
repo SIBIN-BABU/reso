@@ -1,5 +1,5 @@
 
-from django.urls import path
+from django.urls import path,include
 from  .import views
 
 
@@ -14,7 +14,8 @@ urlpatterns = [
    path("payment/",views.payment_info,name="payment"),
    path("shipped_item/",views.shipped_item,name="shipped_item"),
    path("unshipped_item/",views.unshipped_item,name="unshipped_item"),
-   path("order/<int:pk>/",views.order,name="order")
+   path("order/<int:pk>/",views.order,name="order"),
+   path("paypal",include("paypal.standard.ipn.urls")),
    
    
   

@@ -11,6 +11,13 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.contrib import messages
 from pro.models import Product
+
+#paypal stuffs 
+from django.urls import reverse
+from paypal.standard.forms import PayPalPaymentsForm
+
+from django.conf import settings
+import uuid #duplicate id for paypal
 # Create your views here.
 def payment_sucess(request):
     return render(request,"payment_success.html")
