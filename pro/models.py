@@ -55,6 +55,7 @@ class Product(models.Model):
     
     new_product=models.BooleanField(default=False)
     outof_stock = models.BooleanField(default=False)
+    Trending_products = models.BooleanField(default=False)
     
         
     def __str__(self):
