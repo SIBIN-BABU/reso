@@ -112,6 +112,11 @@
                     <div class="tab-pane fade show active" id="nav-all">
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
                             {% for product in products %}
+                            
+                            {% if product.Trending_products %}
+                                
+                            
+                                
                             <div class="col">
                                 <div class="card border-0 shadow-lg position-relative rounded-3 overflow-hidden">
                                     <!-- Discount Badge -->
@@ -163,6 +168,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {% endif %}
                             {% endfor %}
                         </div>
                     </div>
