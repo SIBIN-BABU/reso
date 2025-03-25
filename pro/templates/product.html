@@ -249,7 +249,7 @@
                             {% for pro in pros %}
                             
                           
-                          {% if product.category.name == "Shoes" %}
+                          {% if pro.category.name == "Shoes" %}
                             
                           
                             
@@ -259,7 +259,7 @@
                             <div class="col">
                                 <div class="card border-0 shadow-lg position-relative rounded-3 overflow-hidden">
                                     <!-- Discount Badge -->
-                                    {% if prod.is_sale %}
+                                    {% if pro.is_sale %}
                                     <span class="badge bg-danger position-absolute top-0 start-0 m-2 px-3 py-2">-{{ pro.discount }}% OFF</span>
                                     {% endif %}
 
@@ -287,7 +287,7 @@
 
                                         <!-- Pricing -->
                                         <div class="mb-3">
-                                            {% if products.is_sale %}
+                                            {% if pro.is_sale %}
                                             <span class="text-muted text-decoration-line-through">${{ pro.price }}</span>
                                             <span class="fw-bold text-success">$ {{ pro.sale_price }}</span>
                                             {% else %}
@@ -307,12 +307,12 @@
                                     </div>
                                 </div>
                             </div>
-                            {% elif product.category.name == "Accessories" %}
+                            {% elif pro.category.name == "Accessories" %}
 
                             <div class="col">
                                 <div class="card border-0 shadow-lg position-relative rounded-3 overflow-hidden">
                                     <!-- Discount Badge -->
-                                    {% if prod.is_sale %}
+                                    {% if pro.is_sale %}
                                     <span class="badge bg-danger position-absolute top-0 start-0 m-2 px-3 py-2">-{{ pro.discount }}% OFF</span>
                                     {% endif %}
 
@@ -340,7 +340,7 @@
 
                                         <!-- Pricing -->
                                         <div class="mb-3">
-                                            {% if products.is_sale %}
+                                            {% if pro.is_sale %}
                                             <span class="text-muted text-decoration-line-through">${{ pro.price }}</span>
                                             <span class="fw-bold text-success">$ {{ pro.sale_price }}</span>
                                             {% else %}
