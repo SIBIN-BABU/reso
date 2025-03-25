@@ -128,7 +128,14 @@ def Register_user(request):
         return render(request, "register.html", {"form": form})
 
 def product(request,pk):
-    product = Product.objects.get(id=pk)
+    #product = Product.objects.get(id=pk)
+    
+    
+    product = get_object_or_404(Product, id=pk)
+   
+    
+    # Fetch related products from the same category, excluding the current product
+    related_products = Product.objects.filter(category=product.category).exclude(id=product.id)[:4] 
    
 
 
@@ -137,7 +144,7 @@ def product(request,pk):
     
      
     product_image =product.images.all()
-    return render(request,"product.html",{"product":product,"product_images":product_image," category": category})
+    return render(request,"product.html",{"product":product,"product_images":product_image," category": category,"related_products":related_products})
 
 
 def category(request,foo):

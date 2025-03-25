@@ -222,7 +222,27 @@
 
 
 
-
+  <h3 class="mt-5 fw-bold text-primary">Related Products</h3>
+    
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+      {% for related in related_products %}
+      <div class="col">
+          <div class="card border-0 shadow-lg">
+              <a href="{% url 'product' related.id %}">
+                  <img src="{{ related.image.url }}" class="card-img-top" alt="{{ related.name }}">
+              </a>
+              <div class="card-body text-center">
+                  <h5 class="fw-bold">{{ related.name }}</h5>
+                  <span class="fw-bold text-dark">$ {{ related.price }}</span>
+                  <a href="{% url 'product' related.id %}" class="btn btn-outline-dark btn-sm mt-2">View</a>
+              </div>
+          </div>
+      </div>
+      {% empty %}
+      <p class="text-muted text-center">No related products found.</p>
+      {% endfor %}
+  </div>
+</div>
 
 
 
