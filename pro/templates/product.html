@@ -246,27 +246,27 @@
                 <div class="tab-content mt-4" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-all">
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-                            {% for product in product %}
+                            {% for products in product %}
                             
-                            {% if product.category.name == 'Shoes' %}
+                            {% if products.category.name == 'Shoes' %}
                                 
                             
                                 
                             <div class="col">
                                 <div class="card border-0 shadow-lg position-relative rounded-3 overflow-hidden">
                                     <!-- Discount Badge -->
-                                    {% if product.is_sale %}
+                                    {% if products.is_sale %}
                                     <span class="badge bg-danger position-absolute top-0 start-0 m-2 px-3 py-2">-{{ product.discount }}% OFF</span>
                                     {% endif %}
 
                                     <!-- Product Image -->
-                                    <a href="{% url 'product' product.id %}" class="d-block position-relative">
-                                        <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                                    <a href="{% url 'products' products.id %}" class="d-block position-relative">
+                                        <img src="{{ products.image.url }}" class="card-img-top img-fluid" alt="{{ products.name }}">
                                     </a>
 
                                     <!-- Card Body -->
                                     <div class="card-body text-center">
-                                        <h5 class="fw-bold text-dark">{{ product.name }}</h5>
+                                        <h5 class="fw-bold text-dark">{{ products.name }}</h5>
                                         <p class="small text-muted">1 Unit</p>
 
                                         <!-- Star Rating -->
@@ -283,11 +283,11 @@
 
                                         <!-- Pricing -->
                                         <div class="mb-3">
-                                            {% if product.is_sale %}
-                                            <span class="text-muted text-decoration-line-through">${{ product.price }}</span>
-                                            <span class="fw-bold text-success">$ {{ product.sale_price }}</span>
+                                            {% if products.is_sale %}
+                                            <span class="text-muted text-decoration-line-through">${{ products.price }}</span>
+                                            <span class="fw-bold text-success">$ {{ products.sale_price }}</span>
                                             {% else %}
-                                            <span class="fw-bold text-dark">$ {{ product.price }}</span>
+                                            <span class="fw-bold text-dark">$ {{ products.price }}</span>
                                             {% endif %}
                                         </div>
 
