@@ -1,3 +1,4 @@
+from os import name
 from django.shortcuts import render,redirect,get_object_or_404
 from.models import Product,Category,Profile,Contact,ProductImage
 from django.contrib.auth import authenticate,login,logout
@@ -128,7 +129,7 @@ def Register_user(request):
 
 def product(request,pk):
     product = Product.objects.get(id=pk)
-    pros = Product.objects.filter(category__name__in=["Shoes", "Accessories"])
+    pros = Product.objects.filter(category=name.category).exclude(id=name.id)
 
 
    
