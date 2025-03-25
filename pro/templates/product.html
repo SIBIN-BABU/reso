@@ -246,11 +246,13 @@
                 <div class="tab-content mt-4" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-all">
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-                            {% for pro in pros %}
+                            {% for pro in pros  %}
                             
                           
                         
                             
+                        
+                                
                           
                             
                                 
@@ -308,22 +310,29 @@
                                 </div>
                             </div>
                           
+                        {% endfor %}
 
+
+                        
+                        {% for con in cons %}
+                            
+                        
+                            
                             <div class="col">
                                 <div class="card border-0 shadow-lg position-relative rounded-3 overflow-hidden">
                                     <!-- Discount Badge -->
-                                    {% if pro.is_sale %}
-                                    <span class="badge bg-danger position-absolute top-0 start-0 m-2 px-3 py-2">-{{ pro.discount }}% OFF</span>
+                                    {% if con.is_sale %}
+                                    <span class="badge bg-danger position-absolute top-0 start-0 m-2 px-3 py-2">-{{ con.discount }}% OFF</span>
                                     {% endif %}
 
                                     <!-- Product Image -->
                                     
-                                        <img src="{{ pro.image.url }}" class="card-img-top img-fluid" alt="{{ pro.name }}">
+                                        <img src="{{ con.image.url }}" class="card-img-top img-fluid" alt="{{ con.name }}">
                              
 
                                     <!-- Card Body -->
                                     <div class="card-body text-center">
-                                        <h5 class="fw-bold text-dark">{{ pro.name }}</h5>
+                                        <h5 class="fw-bold text-dark">{{ con.name }}</h5>
                                         <p class="small text-muted">1 Unit</p>
 
                                         <!-- Star Rating -->
@@ -340,11 +349,11 @@
 
                                         <!-- Pricing -->
                                         <div class="mb-3">
-                                            {% if pro.is_sale %}
-                                            <span class="text-muted text-decoration-line-through">${{ pro.price }}</span>
+                                            {% if con.is_sale %}
+                                            <span class="text-muted text-decoration-line-through">${{ con.price }}</span>
                                             <span class="fw-bold text-success">$ {{ pro.sale_price }}</span>
                                             {% else %}
-                                            <span class="fw-bold text-dark">$ {{ pro.price }}</span>
+                                            <span class="fw-bold text-dark">$ {{ con.price }}</span>
                                             {% endif %}
                                         </div>
 

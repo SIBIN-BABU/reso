@@ -129,7 +129,8 @@ def Register_user(request):
 
 def product(request,pk):
     product = Product.objects.get(id=pk)
-    pros = Product.objects.filter ( product = category.__name__("Shoes"))
+    pros = Product.objects.filter ( category__name="Shoes")
+    cons = Product.objects.filter ( category__name="Accessories")
 
 
    
@@ -137,7 +138,7 @@ def product(request,pk):
     
      
     product_image =product.images.all()
-    return render(request,"product.html",{"product":product,"product_images":product_image," category": category,"pros":pros})
+    return render(request,"product.html",{"product":product,"product_images":product_image," category": category,"pros":pros,"cons":cons})
 
 
 def category(request,foo):
