@@ -135,7 +135,7 @@ def product(request,pk):
    
     
     # Fetch related products from the same category, excluding the current product
-    related_products = Product.objects.filter(category=product.category).exclude(id=product.id)[:4] 
+    related_products = Product.objects.filter(category=product.category).exclude(product)[:4] 
    
 
 
