@@ -106,7 +106,10 @@
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
                 <img src="{{ image.image.url }}" class="d-block w-100 product-carousel-image" alt="Product Image">
             </div>
-        
+        {% empty %}
+            <div class="carousel-item active">
+                <img src="{% static 'images/no-image.png' %}" class="d-block w-100" alt="No Image Available">
+            </div>
         {% endfor %}
     </div>
 
@@ -223,10 +226,7 @@
 
 
 
-  
-
-
-
+ 
 
 
 
