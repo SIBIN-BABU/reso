@@ -128,13 +128,13 @@ def Register_user(request):
 
 def product(request,pk):
     product = Product.objects.get(id=pk)
-    
+    pros = Product.objects.filter(Category)
    
     
     
      
     product_image =product.images.all()
-    return render(request,"product.html",{"product":product,"product_images":product_image," category": category})
+    return render(request,"product.html",{"product":product,"product_images":product_image," category": category,"pros":pros})
 
 
 def category(request,foo):
