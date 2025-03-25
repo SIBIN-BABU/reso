@@ -129,7 +129,7 @@ def Register_user(request):
 
 def product(request,pk):
     product = Product.objects.get(id=pk)
-    pros = Product.objects.filter(category=name.category).exclude(id=name.id)
+    pros = Product.objects.filter ( product = category.__name__("Shoes"))
 
 
    
