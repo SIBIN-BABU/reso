@@ -21,7 +21,7 @@ def cart_summary(request):
     cart = request.session.get('cart', {})  # Ensure it's a dictionary
 
     cart_products = Product.objects.filter(id__in=cart.keys())  # Products in cart
-    recommended_products = Product.objects.exclude(id__in=cart.keys())[:10]  # Exclude cart items
+    recommended_products = Product.objects.exclude(id__in=cart_products)[:10]  # Exclude cart items
     
         
    
