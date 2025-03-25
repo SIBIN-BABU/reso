@@ -226,7 +226,7 @@
 
 
 
-<section class="py-5">
+  <section class="py-5">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -307,7 +307,59 @@
                                     </div>
                                 </div>
                             </div>
-                            {% endif %}
+                            {% elif product.category.name == "Accessories" %}
+
+                            <div class="col">
+                                <div class="card border-0 shadow-lg position-relative rounded-3 overflow-hidden">
+                                    <!-- Discount Badge -->
+                                    {% if prod.is_sale %}
+                                    <span class="badge bg-danger position-absolute top-0 start-0 m-2 px-3 py-2">-{{ pro.discount }}% OFF</span>
+                                    {% endif %}
+
+                                    <!-- Product Image -->
+                                    
+                                        <img src="{{ pro.image.url }}" class="card-img-top img-fluid" alt="{{ pro.name }}">
+                             
+
+                                    <!-- Card Body -->
+                                    <div class="card-body text-center">
+                                        <h5 class="fw-bold text-dark">{{ pro.name }}</h5>
+                                        <p class="small text-muted">1 Unit</p>
+
+                                        <!-- Star Rating -->
+                                        <div class="d-flex justify-content-center align-items-center mb-2">
+                                            <span class="text-warning">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-half"></i>
+                                            </span>
+                                            <span class="small text-muted ms-2">(4.5)</span>
+                                        </div>
+
+                                        <!-- Pricing -->
+                                        <div class="mb-3">
+                                            {% if products.is_sale %}
+                                            <span class="text-muted text-decoration-line-through">${{ pro.price }}</span>
+                                            <span class="fw-bold text-success">$ {{ pro.sale_price }}</span>
+                                            {% else %}
+                                            <span class="fw-bold text-dark">$ {{ pro.price }}</span>
+                                            {% endif %}
+                                        </div>
+
+                                        <!-- Buttons -->
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <a class="btn btn-outline-dark btn-sm w-50" href="{% url 'product' product.id %}">
+                                                <i class="bi bi-eye"></i> View
+                                            </a>
+                                            <button class="btn btn-primary btn-sm w-50">
+                                                <i class="bi bi-cart-plus"></i> Add to Cart
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             {% endfor %}
                         </div>
                     </div>
