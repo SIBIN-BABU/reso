@@ -232,7 +232,7 @@
             <div class="col-12">
                 <!-- Tabs Header -->
                 <div class="d-flex justify-content-between align-items-center border-bottom pb-3">
-                    <h3 class="fw-bold text-primary">Trending Products</h3>
+                    <h3 class="fw-bold text-primary">You May Like This ..</h3>
                     <nav>
                         <div class="nav nav-tabs border-0" id="nav-tab" role="tablist">
                             <a class="nav-link active text-uppercase fw-bold" id="nav-all-tab" data-bs-toggle="tab" href="#nav-all">All</a>
@@ -246,9 +246,9 @@
                 <div class="tab-content mt-4" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-all">
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-                            {% for product in CAtes %}
+                            {% for product in product %}
                             
-                           
+                            {% if product.category.name = 'Shoes' %}
                                 
                             
                                 
@@ -303,7 +303,7 @@
                                     </div>
                                 </div>
                             </div>
-                          
+                            {% endif %}
                             {% endfor %}
                         </div>
                     </div>
