@@ -58,13 +58,21 @@ def user_login(request):
 
                 # Add items to session cart
                 cart = Cart(request)
+                session_cart = cart.cart  # Get the current session cart
+
                 for key, value in convert_cart.items():
-                    try:
-                        product_id = int(key)  # ✅ Convert to integer
-                        quantity = int(value)  # ✅ Convert to integer
-                        cart.db_add(product=product_id, quantity=quantity)
-                    except ValueError:
-                        continue  
+                        try:
+                            product_id = int(key)
+                            quantity = int(value)
+                            if str(product_id) in session_cart:
+                                session_cart[str(product_id)] += quantity  # ✅ Merge existing items
+                            else:
+                                session_cart[str(product_id)] = quantity  # ✅ Add new items
+                        except ValueError:
+                            continue
+
+                cart.save()  # ✅ Save the updated session cart
+ 
 
             messages.success(request, "You have been logged in.")
             return redirect('index')  
