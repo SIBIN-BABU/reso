@@ -51,7 +51,7 @@ class Cart:
         
 
         if product_id in self.cart:
-                    messages.warning(request, "Product already added to the cart")  # 🔔 Display warning message
+                pass
         else:
                     self.cart[product_id] = str(product_qty)
                 

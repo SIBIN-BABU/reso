@@ -66,6 +66,8 @@ class ProductImage(models.Model):
     product = models.ForeignKey(Product, related_name='images', on_delete=models.CASCADE)
     images = models.ImageField(upload_to='uploads/product/multiple/')
 
+    def __str__(self):
+        return self.product
 
 class Customer(models.Model):
     first_name=models.CharField(max_length=50)
