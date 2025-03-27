@@ -45,7 +45,7 @@ class Cart:
     
       
 
-    def add(self, product, quantity, request):
+    def add(self, product, quantity):
         product_id = int(product.id)
         product_qty = str(quantity)
         
@@ -53,11 +53,8 @@ class Cart:
         if product_id in self.cart:
                 pass
         else:
-                    self.cart[product_id] = str(product_qty)
+            self.cart[product_id] = str(product_qty)
                 
-                    
-                    
-                    messages.success(request, "Product added to cart successfully")  # ✅ Success message
 
         self.session.modified = True
 

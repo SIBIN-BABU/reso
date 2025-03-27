@@ -36,14 +36,6 @@ def cart_add(request):
         product_id = int(request.POST.get('product_id'))
         product_qty = str(request.POST.get('product_qty'))
         
-        
-        
-        
-        
-
-
-
-
 
         # Fetch product from the database
         
@@ -51,7 +43,7 @@ def cart_add(request):
        
 
         # Add product to cart (✅ Pass request here)
-        cart.add(product=product, quantity=product_qty, request=request)
+        cart.add(product=product, quantity=product_qty)
 
         # Get updated cart quantity
         cart_quantity = cart.__len__()
