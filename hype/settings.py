@@ -27,9 +27,10 @@ SECRET_KEY = "django-insecure-vnlkyj=n1g!c))x-)b(j_iw4s(e^79sfjm7^h!0$hhf@b&(ucs
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS = []
 
-ALLOWED_HOSTS = ['https://urbanswifts.com', 'urbanswifts.com','reso-production.up.railway.app','https://reso-production.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['https://urbanswifts.com','https://reso-production.up.railway.app']
+#ALLOWED_HOSTS = ['https://urbanswifts.com', 'urbanswifts.com','reso-production.up.railway.app','https://reso-production.up.railway.app']
+#CSRF_TRUSTED_ORIGINS = ['https://urbanswifts.com','https://reso-production.up.railway.app']
 
 
 # Application definition
@@ -162,6 +163,7 @@ USE_TZ = True
 STATIC_URL = "static/"
 
 #white noise stuff
+WHITENOISE_MANIFEST_STRICT = False
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATIC_ROOT = BASE_DIR / 'staticfiles'

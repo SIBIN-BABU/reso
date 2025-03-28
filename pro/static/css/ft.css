@@ -23,11 +23,7 @@
 /* style.css */
 
 /* ✅ Full-Screen Background */
-body {
-    background: url("../images/background.jpg") no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Poppins', sans-serif;
-}
+
 
 /* ✅ Dark Overlay for Readability */
 .overlay {
