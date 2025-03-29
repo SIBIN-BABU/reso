@@ -242,7 +242,7 @@ def unshipped_item(request):
     
     
 def order(request,pk):
-    if request.user.is_authenticated and request.user.is_superuser:
+    if request.user.is_authenticated and request.user:
         orders = Order.objects.get(id=pk)
         orderitem  = OrderItem.objects.filter(order=pk)
         print(orderitem)
@@ -257,5 +257,6 @@ def order_details(request):
     if request.user.is_authenticated:
         current_user = request.user
         order = Order.objects.filter(user = current_user)
+        
     
     return render(request,"order_details.html",{"order":order})
