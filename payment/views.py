@@ -219,11 +219,15 @@ def shipped_item(request):
         
         order = Order.objects.filter(shipped=True)
         return render(request,"shipped_item.html",{"order":order }) 
+    
+        
+        
     else:
         messages.success(request,"Access denied  !!")
         return redirect('index')
             
-
+        
+        
 
 
 def unshipped_item(request):
@@ -246,4 +250,12 @@ def order(request,pk):
     else:
         messages.success(request,"Access denied  !!")
         return redirect('index')
-        
+
+
+def order_details(request):
+    
+    if request.user.is_authenticated:
+        current_user = request.user
+        order = Order.objects.filter(user = current_user)
+    
+    return render(request,"order_details.html",{"order":order})
