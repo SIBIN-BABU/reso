@@ -36,6 +36,7 @@ def cart_add(request):
         product_id = int(request.POST.get('product_id'))
         product_qty = str(request.POST.get('product_qty'))
         
+        
 
         # Fetch product from the database
         

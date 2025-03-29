@@ -48,6 +48,7 @@ class Cart:
     def add(self, product, quantity):
         product_id = int(product.id)
         product_qty = str(quantity)
+      
         
 
         if product_id in self.cart:

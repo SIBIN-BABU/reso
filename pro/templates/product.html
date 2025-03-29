@@ -161,28 +161,9 @@
 
                         <!-- ✅ Quantity Selector -->
                        
-                        {% if product.category.name == "shoes" %}
-                        <div class="d-flex justify-content-center align-items-center gap-2">
-                            <label for="qty-cart"><strong>Quantity:</strong></label>
-                            <select class="form-select" id="qty-cart">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                        <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
-                            <label for="size-cart"><strong>Size:</strong></label>
-                            <select class="form-select" id="size-cart">
-                                <option value="1">7</option>
-                                <option value="2">8</option>
-                                <option value="3">9</option>
-                                <option value="4">10</option>
-                                <option value="5">11</option>
-                            </select>
-                        </div>
-                            {% else %}
+                        
+                      
+                        
                             <div class="d-flex justify-content-center align-items-center gap-2">
                                 <label for="qty-cart"><strong>Quantity:</strong></label>
                                 <select class="form-select" id="qty-cart">
@@ -194,7 +175,7 @@
                                 </select>
                             </div>
                             
-                        {% endif %}
+                      
                             
                         
 
@@ -307,6 +288,7 @@
             data: {
                 product_id: product_id,
                 product_qty: $('#qty-cart option:selected').text(),
+               
                 csrfmiddlewaretoken: "{{ csrf_token }}",
                 action: "post"
             },
