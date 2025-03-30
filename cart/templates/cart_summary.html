@@ -157,3 +157,57 @@
         </div>
     </div>
 </section>
+<script>
+  $(document).on("click", ".update-cart", function (e) {
+      e.preventDefault();
+  
+      let product_id = $(this).data("index");  // Get product ID from button
+      let product_qty = $("#select" + product_id).val();  // Get selected quantity
+  
+      $.ajax({
+          type: "POST",
+          url: "{% url 'cart_update' %}",  // Django view URL
+          data: {
+              product_id: product_id,
+              product_qty: product_qty,
+              csrfmiddlewaretoken: "{{ csrf_token }}",
+              action: "post"
+          },
+          success: function (json) {
+              location.reload();  // Refresh cart page to reflect changes
+          },
+          error: function (xhr, errmsg, err) {
+              console.log("Error:", errmsg);
+          }
+      });
+  });
+  
+  
+</script>
+
+
+<script>
+  $(document).on("click", ".delete-cart", function (e) {
+      e.preventDefault();
+  
+      let product_id = $(this).val(); 
+       // Get product ID from button
+  
+      $.ajax({
+          type: "POST",
+          url: "{% url 'cart_delete' %}",  // Django view URL
+          data: {
+              product_id: product_id,
+              csrfmiddlewaretoken: "{{ csrf_token }}",
+              action: "post"
+          },
+          success: function (json) {
+              location.reload();  // Refresh cart page to reflect changes
+          },
+          error: function (xhr, errmsg, err) {
+              console.log("Error:", errmsg);
+          }
+      });
+  });
+  
+</script>
