@@ -241,15 +241,38 @@ def unshipped_item(request):
         
     
     
-def order(request,pk):
-    if request.user.is_authenticated and request.user:
-        orders = Order.objects.get(id=pk)
-        orderitem  = OrderItem.objects.filter(order=pk)
-        print(orderitem)
-        return render(request,"order.html",{"orders":orders,"orderitem":orderitem}) 
+def order(request, pk):
+    cart = Cart(request)
+    totals = cart.get_totals()  # Assuming this returns the cart total price
+
+    if request.user.is_authenticated:
+        try:
+            orders = Order.objects.get(id=pk)
+            orderitems = OrderItem.objects.filter(order=pk)
+
+            # Calculate total considering sale price if available
+            order_total = 0
+            for item in orderitems:
+                if hasattr(item.product, "sale_price") and item.product.sale_price:
+                    price = item.product.sale_price  # Use sale price if available
+                else:
+                    price = item.product.price  # Otherwise, use regular price
+                
+                order_total += price * item.quantity
+
+            return render(request, "order.html", {
+                "orders": orders,
+                "orderitems": orderitems,
+                "totals": order_total
+            })
+        except Order.DoesNotExist:
+            messages.error(request, "Order not found!")
+            return redirect('index')
     else:
-        messages.success(request,"Access denied  !!")
+        messages.error(request, "Access denied!")
         return redirect('index')
+
+
 
 
 def order_details(request):

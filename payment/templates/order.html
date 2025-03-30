@@ -12,7 +12,7 @@
               <p class="lead fw-bold mb-5" style="color: #f37a27;">UN-Shipped item</p>
               {% endif %}
   
-  {% for order  in orderitem %}
+  {% for order  in orderitems %}
     
   
         
@@ -37,9 +37,14 @@
                   <div class="col-md-8 col-lg-9">
                     <p>{{order.product}}</p>
                   </div>
-                  <div class="col-md-4 col-lg-3">
-                    <p>£{{order.price}}</p>
-                  </div>
+                  <div class="col-3 text-end">
+                    {% if order.is_sale %}
+                        <span class="text-muted text-decoration-line-through">${{ product.price }}</span><br>
+                        <strong>$ {{ order.sale_price }}</strong> 
+                    {% else %}
+                        <strong>$ {{ order.price }}</strong>
+                    {% endif %}
+                </div>
                 </div>
                 <div class="row">
                   <div class="col-md-8 col-lg-9">
@@ -56,12 +61,20 @@
   
 
               {% endfor %}
+
+              
+             
+
               <div class="row my-4">
                 <div class="col-md-4 offset-md-8 col-lg-3 offset-lg-9">
-                  <p class="lead fw-bold mb-0" style="color: #f37a27;">£262.99</p>
+                  <p class="lead fw-bold mb-0" style="color: #f37a27;">{{totals}}</p>
                 </div>
               </div>
   
+                
+
+                
+              
               <p class="lead fw-bold mb-4 pb-2" style="color: #f37a27;">Tracking Order</p>
   
               <div class="row">
