@@ -64,10 +64,11 @@ class Product(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, related_name='images', on_delete=models.CASCADE)
-    images = models.ImageField(upload_to='uploads/product/multiple/')
+    images = models.ImageField(upload_to='uploads/product/')
 
     def __str__(self):
-        return self.product
+        return f"Image of {self.product.name if hasattr(self.product, 'name') else self.product.id}"
+
 
 class Customer(models.Model):
     first_name=models.CharField(max_length=50)

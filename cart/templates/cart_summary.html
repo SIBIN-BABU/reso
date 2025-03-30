@@ -5,7 +5,7 @@
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col">
-                <div class="card">
+                <div class="card border border-3">  <!-- Increased border width -->
                     <div class="card-body p-4">
                         <div class="row">
                             <div class="col-lg-12">
@@ -31,7 +31,7 @@
                                 </div>
 
                                 <!-- ✅ Table Header -->
-                                <div class="row bg-light py-2 fw-bold border-bottom">
+                                <div class="row bg-light py-2 fw-bold border-bottom border-3">  <!-- Increased border width -->
                                     <div class="col-md-2 text-center">Product</div>
                                     <div class="col-md-3">Details</div>
                                     <div class="col-md-2 text-center">Quantity</div>
@@ -42,28 +42,23 @@
 
                                 <!-- ✅ Loop Through Cart Items -->
                                 {% for product in product %}
-                                <div class="row align-items-center py-3 border-bottom">
+                                <div class="row align-items-center py-3 border-bottom border-3">  <!-- Increased border width -->
 
-                                    
-                                    
-                                    <!-- Column 1: Product Image -->
                                     <div class="col-md-2 text-center">
                                         {% if product.is_sale %}
-                                        <div class="sale-badge">Sale</div>
-                                    {% endif %}
+                                            <div class="sale-badge">Sale</div>
+                                        {% endif %}
                                         <img src="{{ product.image.url }}" class="img-fluid rounded-3" alt="{{ product.name }}" style="width: 65px;">
                                     </div>
 
-                                    <!-- Column 2: Product Name & Description -->
                                     <div class="col-md-3">
                                         <h5>{{ product.name }}</h5>
                                         <p class="small mb-0">{{ product.description }}</p>
                                     </div>
 
-                                    <!-- Column 3: Quantity Selector -->
                                     <div class="col-md-2 text-center">
                                         <label class="me-2 d-block">Quantity:</label>
-                                        <select class="form-select form-select-sm  mx-auto" style="width: 60px;" id="select{{product.id}}">
+                                        <select class="form-select form-select-sm mx-auto" style="width: 60px;" id="select{{product.id}}">
                                             {% for key, value in quantities.items %}
                                                 {% if key == product.id|slugify %}
                                                     <option selected>{{ value }}</option>
@@ -75,29 +70,14 @@
                                             <option value="4">4</option>
                                             <option value="5">5</option>
                                         </select>
-
-                                        <ul>
-                                          
-                                      
-
-                                       
-                                    
-                                          
-                                       
-                                    
-
-                                    
                                     </div>
-                                   
-                                    <!-- Column 4: Update Button -->
+
                                     <div class="col-md-2 text-center">
-                                        <button  type="button" data-index="{{product.id}}" class="btn btn-primary btn-sm update-btn w-50 update-cart" >Update</button>
+                                        <button type="button" data-index="{{product.id}}" class="btn btn-primary btn-sm update-btn w-50 update-cart">Update</button>
                                     </div>
 
-                                    <!-- Column 5: Price -->
                                     <div class="col-md-2 text-center"> 
                                         {% if product.is_sale %}
-                                            
                                             <span class="text-muted text-decoration-line-through">${{ product.price }}</span><br>
                                             <strong>$ {{ product.sale_price }}</strong> 
                                         {% else %}
@@ -105,32 +85,15 @@
                                         {% endif %}
                                     </div>
 
-
-                                    
-                                    
-                                    
-
-
-
-                                    <!-- Column 6: Remove Button -->
                                     <div class="col-md-1 text-center"> 
-                                        
-                                            <button type="button" value="{{ product.id }}" class="btn btn-danger btn-sm container delete-cart">
-                                                Delete
-                                            </button>
-                                            <i class="fas fa-trash-alt"></i>
-                                        
+                                        <button type="button" value="{{ product.id }}" class="btn btn-danger btn-sm container delete-cart">Delete</button>
+                                        <i class="fas fa-trash-alt"></i>
                                     </div>
-
-                                    
-                                    
                                 </div>
-                                
-                                {% endfor %} <br><br>
+                                {% endfor %} 
+                                <br><br>
 
-
-
-                                <div class="card border-0 shadow-sm p-3 mb-4 bg-light rounded">
+                                <div class="card border-0 shadow-sm p-3 mb-4 bg-light rounded border-3">  <!-- Increased border width -->
                                     <div class="card-body text-center">
                                         <h4 class="fw-bold text-primary">Cart Total</h4>
                                         <h3 class="fw-bold text-dark">${{ totals }}</h3>
@@ -138,27 +101,54 @@
                                         <a class="btn btn-secondary" href="{% url 'checkout' %}">Check Out</a>
                                         <br><br> 
                                         <div class="col-md-1 text-center"> 
-                                        
-                                          
-                                        
-                                          
-                                          <i class="fas fa-trash-alt"></i>
-
-                                          <form action="{% url 'clear_cart' %}" method="POST">
-                                            {% csrf_token %}
-                                            <button type="submit" class="btn btn-danger container">Clear Cart</button>
-                                        </form>
-                                      
-                                  </div>
+                                            <i class="fas fa-trash-alt"></i>
+                                            <form action="{% url 'clear_cart' %}" method="POST">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-danger container">Clear Cart</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                                
-                               
-                            
-                               
-                                   
-                                        
-                                    
+
+                                <section class="container my-1">
+                                    <header class="text-center mb-4">
+                                        <h3 class="fw-bold">Recommended Items</h3>
+                                        <p class="text-muted">Discover the latest additions to our collection.</p>
+                                    </header>
+                                    <div class="row g-4">
+                                        {% for product in recommended_products %}
+                                            {% if product.new_product %}
+                                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                                    <div class="card shadow-lg border-3 rounded-4 p-3 text-center" style="min-height: 400px;">  <!-- Ensuring equal card height -->
+                                                        <div class="d-flex justify-content-between px-3 pt-2">
+                                                            <span class="badge bg-danger px-3 py-2">New</span>
+                                                            <a href="#" class="text-decoration-none">
+                                                                <i class="fas fa-heart text-danger fa-lg"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <a href="{% url 'product' product.id %}">
+                                                                <img src="{{ product.image.url }}" class="card-img-top p-4" alt="{{ product.name }}" style="max-height: 220px; object-fit: contain;">
+                                                            </a>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <h5 class="fw-bold text-dark">{{ product.name }}</h5>
+                                                            {% if product.is_sale %}
+                                                                <span class="text-muted text-decoration-line-through">${{ product.price }}</span>
+                                                                <strong>$ {{ product.sale_price }}</strong> 
+                                                            {% else %}
+                                                                <strong>$ {{ product.price }}</strong>
+                                                            {% endif %}
+                                                        </div>
+                                                        <div class="card-footer bg-transparent border-0">
+                                                            <a class="btn btn-primary w-100 py-2" href="{% url 'product' product.id %}">View Product</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </section>
                             </div>
                         </div>
                     </div>
@@ -166,261 +156,4 @@
             </div>
         </div>
     </div>
-    <br><br/><br><br/><br><br/><br><br/><br><br/><br><br/>
-    
-    <section class="container my-1">
-        <!-- Section Header -->
-        <header class="text-center mb-4">
-            <h3 class="fw-bold">Recommended Items</h3>
-            <p class="text-muted">Discover the latest additions to our collection.</p>
-        </header>
-    
-        <div class="row g-4">
-          
-          {% for product in recommended_products %}
-    {% if product.new_product %}
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <div class="card shadow-lg border-0 rounded-4 p-3">
-                
-                <div class="d-flex justify-content-between px-3 pt-2">
-                    <span class="badge bg-danger px-3 py-2">New</span>
-                    <a href="#" class="text-decoration-none">
-                        <i class="fas fa-heart text-danger fa-lg"></i>
-                    </a>
-                </div>
-
-                <div class="text-center">
-                    <a href="{% url 'product' product.id %}">
-                        <img src="{{ product.image.url }}" class="card-img-top p-4" 
-                             alt="{{ product.name }}" 
-                             style="max-height: 220px; object-fit: contain;">
-                    </a>
-                </div>
-
-                <div class="card-body text-center">
-                    <h5 class="fw-bold text-dark">{{ product.name }}</h5>
-
-                    {% if product.is_sale %}
-                        <span class="text-muted text-decoration-line-through">${{ product.price }}</span>
-                        <strong>$ {{ product.sale_price }}</strong> 
-                    {% else %}
-                        <strong>$ {{ product.price }}</strong>
-                    {% endif %}
-                </div>
-
-                <div class="card-footer bg-transparent text-center border-0">
-                    <a class="btn btn-primary w-100 py-2" href="{% url 'product' product.id %}">
-                        View Product
-                    </a>
-                </div>
-            </div>
-        </div>
-    {% endif %}
-{% endfor %}
-
-        </div>  <!-- End row -->
-       
-
-        <footer class="text-center text-lg-start text-muted bg-primary mt-3">
-            <!-- Section: Links  -->
-            <section class="">
-              <div class="container text-center text-md-start pt-4 pb-4">
-                <!-- Grid row -->
-                <div class="row mt-3">
-                  <!-- Grid column -->
-                  <div class="col-12 col-lg-3 col-sm-12 mb-2">
-                    <!-- Content -->
-                    <a href="https://www.instagram.com/future_forte_edu_consultants_?igsh=dDJzNDQ0ZzN0bHQ2" target="_blank" class="text-white h2">
-                      SIBIN E-com
-                    </a>
-                    <p class="mt-1 text-white">
-                      © 2023 Copyright: MDBootstrap.com
-                    </p>
-                  </div>
-                  <!-- Grid column -->
-          
-                  <!-- Grid column -->
-                  <div class="col-6 col-sm-4 col-lg-2">
-                    <!-- Links -->
-                    <h6 class="text-uppercase text-white fw-bold mb-2">
-                      Store
-                    </h6>
-                    <ul class="list-unstyled mb-4">
-                      <li><a class="text-white-50" href="#">About us</a></li>
-                      <li><a class="text-white-50" href="#">Find store</a></li>
-                      <li><a class="text-white-50" href="#">Categories</a></li>
-                      <li><a class="text-white-50" href="#">Blogs</a></li>
-                    </ul>
-                  </div>
-                  <!-- Grid column -->
-          
-                  <!-- Grid column -->
-                  <div class="col-6 col-sm-4 col-lg-2">
-                    <!-- Links -->
-                    <h6 class="text-uppercase text-white fw-bold mb-2">
-                      Information
-                    </h6>
-                    <ul class="list-unstyled mb-4">
-                      <li><a class="text-white-50" href="#">Help center</a></li>
-                      <li><a class="text-white-50" href="#">Money refund</a></li>
-                      <li><a class="text-white-50" href="#">Shipping info</a></li>
-                      <li><a class="text-white-50" href="#">Refunds</a></li>
-                    </ul>
-                  </div>
-                  <!-- Grid column -->
-          
-                  <!-- Grid column -->
-                  <div class="col-6 col-sm-4 col-lg-2">
-                    <!-- Links -->
-                    <h6 class="text-uppercase text-white fw-bold mb-2">
-                      Support
-                    </h6>
-                    <ul class="list-unstyled mb-4">
-                      <li><a class="text-white-50" href="#">Help center</a></li>
-                      <li><a class="text-white-50" href="#">Documents</a></li>
-                      <li><a class="text-white-50" href="#">Account restore</a></li>
-                      <li><a class="text-white-50" href="#">My orders</a></li>
-                    </ul>
-                  </div>
-                  <!-- Grid column -->
-          
-                  <!-- Grid column -->
-                  <div class="col-12 col-sm-12 col-lg-3">
-                    <!-- Links -->
-                    <h6 class="text-uppercase text-white fw-bold mb-2">Newsletter</h6>
-                    <p class="text-white">Stay in touch with latest updates about our products and offers</p>
-                    <div class="input-group mb-3">
-                      <input type="email" class="form-control border" placeholder="Email" aria-label="Email" aria-describedby="button-addon2" />
-                      <button class="btn btn-light border shadow-0" type="button" id="button-addon2" data-mdb-ripple-color="dark">
-                        Join
-                      </button>
-                    </div>
-                  </div>
-                  <!-- Grid column -->
-                </div>
-                <!-- Grid row -->
-              </div>
-            </section>
-            <!-- Section: Links  -->
-          
-            <div class="">
-              <div class="container">
-                <div class="d-flex justify-content-between py-4 border-top">
-                  <!--- payment --->
-                  <div>
-                    <i class="fab fa-lg fa-cc-visa text-white"></i>
-                    <i class="fab fa-lg fa-cc-amex text-white"></i>
-                    <i class="fab fa-lg fa-cc-mastercard text-white"></i>
-                    <i class="fab fa-lg fa-cc-paypal text-white"></i>
-                  </div>
-                  <!--- payment --->
-          
-                  <!--- language selector --->
-                  <div class="dropdown dropup">
-                    <a class="dropdown-toggle text-white" href="#" id="Dropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false"> <i class="flag-united-kingdom flag m-0 me-1"></i>English </a>
-          
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="Dropdown">
-                      <li>
-                        <a class="dropdown-item" href="#"><i class="flag-united-kingdom flag"></i>English <i class="fa fa-check text-success ms-2"></i></a>
-                      </li>
-                      <li><hr class="dropdown-divider" /></li>
-                      <li>
-                        <a class="dropdown-item" href="#"><i class="flag-poland flag"></i>Polski</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#"><i class="flag-china flag"></i>中文</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#"><i class="flag-japan flag"></i>日本語</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#"><i class="flag-germany flag"></i>Deutsch</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#"><i class="flag-france flag"></i>Français</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#"><i class="flag-spain flag"></i>Español</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#"><i class="flag-russia flag"></i>Русский</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#"><i class="flag-portugal flag"></i>Português</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <!--- language selector --->
-                </div>
-              </div>
-            </div>
-          </footer>
-    </section>
-    
-    
-   
-   
 </section>
-<br>
-
-<br><br>
-
-
-
-<script>
-    $(document).on("click", ".update-cart", function (e) {
-        e.preventDefault();
-    
-        let product_id = $(this).data("index");  // Get product ID from button
-        let product_qty = $("#select" + product_id).val();  // Get selected quantity
-    
-        $.ajax({
-            type: "POST",
-            url: "{% url 'cart_update' %}",  // Django view URL
-            data: {
-                product_id: product_id,
-                product_qty: product_qty,
-                csrfmiddlewaretoken: "{{ csrf_token }}",
-                action: "post"
-            },
-            success: function (json) {
-                location.reload();  // Refresh cart page to reflect changes
-            },
-            error: function (xhr, errmsg, err) {
-                console.log("Error:", errmsg);
-            }
-        });
-    });
-    
-    
-  </script>
-
-
-  <script>
-    $(document).on("click", ".delete-cart", function (e) {
-        e.preventDefault();
-    
-        let product_id = $(this).val(); 
-         // Get product ID from button
-    
-        $.ajax({
-            type: "POST",
-            url: "{% url 'cart_delete' %}",  // Django view URL
-            data: {
-                product_id: product_id,
-                csrfmiddlewaretoken: "{{ csrf_token }}",
-                action: "post"
-            },
-            success: function (json) {
-                location.reload();  // Refresh cart page to reflect changes
-            },
-            error: function (xhr, errmsg, err) {
-                console.log("Error:", errmsg);
-            }
-        });
-    });
-    
-  </script>
-
-
-

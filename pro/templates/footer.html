@@ -1,100 +1,48 @@
 {% load static %}
-<!-- Remove the container if you want to extend the Footer to full width. -->
-<div class="container my-5">
-
-    <footer class="text-white text-center text-lg-start" style="background-color: #23242a;">
-      <!-- Grid container -->
-      <div class="container p-4">
-        <!--Grid row-->
-        <div class="row mt-4">
-          <!--Grid column-->
-          <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-            <h5 class="text-uppercase mb-4">About company</h5>
-  
-            <p>
-              At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-              voluptatum deleniti atque corrupti.
-            </p>
-  
-            <p>
-              Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas
-              molestias.
-            </p>
-  
-            <div class="mt-4">
-              <!-- Facebook -->
-              <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-facebook-f"></i></a>
-              <!-- Dribbble -->
-              <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-dribbble"></i></a>
-              <!-- Twitter -->
-              <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-twitter"></i></a>
-              <!-- Google + -->
-              <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-google-plus-g"></i></a>
-              <!-- Linkedin -->
+<!-- Footer -->
+<footer class="text-white text-center text-lg-start" style="background-color: #23242a; padding: 30px 0;">
+    <div class="container">
+        <div class="row">
+            <!-- About Section -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <h5 class="text-uppercase">About Us</h5>
+                <p class="small text-muted">
+                    Providing high-quality products with seamless shopping experience.
+                </p>
+                <div class="mt-3">
+                    <a class="btn btn-warning btn-sm mx-1"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-warning btn-sm mx-1"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-warning btn-sm mx-1"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-warning btn-sm mx-1"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
-          </div>
-          <!--Grid column-->
-  
-          <!--Grid column-->
-          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase mb-4 pb-1">Search something</h5>
-  
-            <div class="form-outline form-white mb-4">
-              <input type="text" id="formControlLg" class="form-control form-control-lg">
-              <label class="form-label" for="formControlLg" style="margin-left: 0px;">Search</label>
-            <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 48.8px;"></div><div class="form-notch-trailing"></div></div></div>
-  
-            <ul class="fa-ul" style="margin-left: 1.65em;">
-              <li class="mb-3">
-                <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">Germany , Regensburge </span>
-              </li>
-              <li class="mb-3">
-                <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">Urbanswifts.com</span>
-              </li>
-              <li class="mb-3">
-                <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+49 15510 581423</span>
-              </li>
-              <li class="mb-3">
-                <span class="fa-li"><i class="fas fa-print"></i></span><span class="ms-2">+ 01 234 567 89</span>
-              </li>
-            </ul>
-          </div>
-          <!--Grid column-->
-  
-          <!--Grid column-->
-          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase mb-4">Opening hours</h5>
-  
-            <table class="table text-center text-white">
-              <tbody class="font-weight-normal">
-                <tr>
-                  <td>Mon - Thu:</td>
-                  <td>8am - 9pm</td>
-                </tr>
-                <tr>
-                  <td>Fri - Sat:</td>
-                  <td>8am - 1am</td>
-                </tr>
-                <tr>
-                  <td>Sunday:</td>
-                  <td>9am - 10pm</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!--Grid column-->
+
+            <!-- Contact Section -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <h5 class="text-uppercase">Contact</h5>
+                <ul class="list-unstyled small">
+                    <li><i class="fas fa-map-marker-alt me-2"></i> Germany, Regensburg</li>
+                    <li><i class="fas fa-envelope me-2"></i> contact@urbanswifts.com</li>
+                    <li><i class="fas fa-phone me-2"></i> +49 15510 581423</li>
+                </ul>
+            </div>
+
+            <!-- Opening Hours -->
+            <div class="col-lg-4 col-md-12">
+                <h5 class="text-uppercase">Opening Hours</h5>
+                <table class="table text-white table-borderless small">
+                    <tbody>
+                        <tr><td>Mon - Thu:</td><td>8am - 9pm</td></tr>
+                        <tr><td>Fri - Sat:</td><td>8am - 1am</td></tr>
+                        <tr><td>Sunday:</td><td>9am - 10pm</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <!--Grid row-->
-      </div>
-      <!-- Grid container -->
-  
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2020 Copyright:urban@offical.com 
-      
-      </div>
-      <!-- Copyright -->
-    </footer>
-    
-  </div>
-  <!-- End of .container -->
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center py-2 small" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2024 UrbanSwifts. All Rights Reserved.
+    </div>
+</footer>

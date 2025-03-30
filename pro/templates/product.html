@@ -95,20 +95,20 @@
     
     <!-- ✅ Carousel Indicators -->
     <div class="carousel-indicators">
-        {% for image in product_images %}
+        {% for product in product_images %}
             <button type="button" data-bs-target="#productImageCarousel" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></button>
         {% endfor %}
     </div>
 
     <!-- ✅ Carousel Images -->
     <div class="carousel-inner">
-        {% for image in product_images %}
+        {% for product in product_images %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                <img src="{{ image.image.url }}" class="d-block w-100 product-carousel-image" alt="Product Image">
+                <img src="{{ product.image.url }}" class="d-block w-100 product-carousel-image" alt="Product Image">
             </div>
         {% empty %}
             <div class="carousel-item active">
-                <img src="{% static 'images/no-image.png' %}" class="d-block w-100" alt="No Image Available">
+                <img src="{{ product.image.url }}" class="d-block w-100" alt="No Image Available">
             </div>
         {% endfor %}
     </div>
@@ -311,5 +311,5 @@
 </script>
 
 
-
+<br>
 {% include 'footer.html' %}
